@@ -1,19 +1,18 @@
-#' Launch the Covid-19 shiny application
+#' @name launch_app
+#' 
+#' @title Launch the Covid-19 shiny application
 #'
 #' @description This function will find and load the shiny application from inst/app.
 #'
-#' @param x shiny app name
 #'
-#' @return
+#' @examples launch_app()
 #'
-#' @examples
-#'
-#'launch_app()
+#' @source The dataset from the application comes from Ramikripsin coronavirus package
 #'
 #' @export
 #' 
 library(shiny)
 
-launch_app <- function(x){
+launch_app <- function(){
     shiny::runApp(appDir = "inst/app")
   }
