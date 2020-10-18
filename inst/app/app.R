@@ -17,25 +17,25 @@ library(DT)
 ##                                             Global                                         ##
 #==============================================================================================#
 
-southeast <- coronavirus %>%
-  filter(
-    country %in% c(
-      "Indonesia",
-      "Singapore",
-      "Malaysia",
-      "Thailand",
-      "Laos",
-      "Vietnam",
-      "Philippines",
-      "Myanmar",
-      "Cambodia",
-      "Brunei",
-      "Timor-Leste"
-    ),
-    date <= "2020-09-25"
-  ) %>%
-  select(-province) %>%
-  drop_na()
+# southeast <- coronavirus %>%
+#   filter(
+#     country %in% c(
+#       "Indonesia",
+#       "Singapore",
+#       "Malaysia",
+#       "Thailand",
+#       "Laos",
+#       "Vietnam",
+#       "Philippines",
+#       "Myanmar",
+#       "Cambodia",
+#       "Brunei",
+#       "Timor-Leste"
+#     ),
+#     date <= "2020-09-25"
+#   ) %>%
+#   select(-province) %>%
+#   drop_na()
 
 our_theme <- theme_classic() + theme(
   rect = element_rect(fill = NA),
@@ -73,8 +73,8 @@ ui <- dashboardPage(
                        tabName = "rdb",
                        startExpanded = TRUE,
                        menuSubItem("Continent", icon = icon("globe"), tabName = "rdbi"),
-                       menuSubItem("Countries", icon = icon("flag"), tabName = "rdbe"),
-                       menuSubItem("References", icon = icon("book"), tabName = "rdbo")
+                       menuSubItem("Countries", icon = icon("flag"),  tabName = "rdbe"),
+                       menuSubItem("References",icon = icon("book"),  tabName = "rdbo")
                      )
                    )),
   dashboardBody(
@@ -86,18 +86,18 @@ ui <- dashboardPage(
         ".selectize-dropdown, .selectize-input, .selectize-input input {
     color: #ffffff;
 }",
-        
+
         ".dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
     cursor: default;
     box-shadow: none;
     color: #ffffff;
         }",
-        
+
         "#DataTables_Table_0 thead,
         #DataTables_Table_0 th {
         text-align: center;
         }",
-        
+
         "caption {
     padding-top: 8px;
     padding-bottom: 8px;
@@ -116,9 +116,10 @@ ui <- dashboardPage(
         "rdbi",
         titlePanel("COVID-19 in Southeast Asia"),
         fluidRow(
-          valueBoxOutput("confirmed"),
-          valueBoxOutput("death"),
-          valueBoxOutput("recovered")
+          valuebox("confirmed"),
+          valuebox("death"),
+          valuebox("recovered"),
+          valuebox("activecases")
         ),
         sidebarLayout(
           sidebarPanel(
@@ -132,7 +133,7 @@ ui <- dashboardPage(
               format = "dd/mm/yyyy",
               separator = " - "
             ),
-            
+
             pickerInput(
               inputId = "country_choice",
               label = "Select country to compare :",
@@ -178,10 +179,10 @@ ui <- dashboardPage(
       tabItem(
         tabName = "rdbe",
         fluidRow(
-          valueBoxOutput("confirmed_country", width = 3),
-          valueBoxOutput("death_country", width = 3),
-          valueBoxOutput("recovered_country", width = 3),
-          valueBoxOutput("activecases_country", width = 3)
+          valuebox("confirmed_country"),
+          valuebox("death_country"),
+          valuebox("recovered_country"),
+          valuebox("activecases_country")
         ),
         sidebarLayout(sidebarPanel(
           selectInput(
@@ -214,12 +215,14 @@ ui <- dashboardPage(
 ##                                      Tab : Continent                                       ##
 #==============================================================================================#
 server <- function(input, output, session) {
-  newdate <- reactive({
-    filter(southeast, between(date, input$range[1], input$range[2]))
-  })
   
+  # newdate <- reactive({
+  #   southeast %>% filter(between(date, input$range[1], input$range[2]))
+  # })
+  #   
+
   output$covidplotly <- renderPlotly({
-    plot <- newdate() %>%
+    plot <- newdate(input)() %>%
       filter(country %in% c(input$country_choice),
              type == input$type) %>%
       ggplot(aes(x = date,
@@ -244,44 +247,35 @@ server <- function(input, output, session) {
         y = -0.2
       )) %>%
       config(displayModeBar = FALSE)
-  })
+ })
   
+  output$confirmed <- valueboxprint(input = input,
+                                    df = newdate(input)(),
+                                    x = 5,
+                                    label = "confirmed",
+                                    colors = "orange")
+  output$death <- valueboxprint(input = input,
+                                df = newdate(input)(),
+                                x = 6,
+                                label = "death",
+                                colors = "red")
+  output$recovered <- valueboxprint(input = input,
+                                    df = newdate(input)(),
+                                    x = 7,
+                                    label = "recovered",
+                                    colors = "aqua")
   
-  output$confirmed <- renderValueBox({
-    confirmeds <- newdate() %>%
+  output$activecases <- renderValueBox({
+    activecases <- newdate(input)() %>%
       filter(country %in% c(input$country_choice)) %>%
       pivot_wider(names_from = "type", values_from = "cases") %>%
-      summarise(total_confirmed = format(
-        sum(confirmed, na.rm = TRUE),
+      summarise(total_confirmed = format(sum(confirmed, na.rm = TRUE)-sum(death, na.rm=TRUE)-sum(recovered, na.rm = TRUE),
         big.mark = ",",
         scientific = FALSE
       ))
-    valueBox(confirmeds, "Total Confirmed", color = "orange")
+    valueBox(activecases, "Active Cases", color = "lime")
   })
-  
-  output$death <- renderValueBox({
-    deaths <- newdate() %>%
-      filter(country %in% c(input$country_choice)) %>%
-      pivot_wider(names_from = "type", values_from = "cases") %>%
-      summarise(total_confirmed = format(
-        sum(death, na.rm = TRUE),
-        big.mark = ",",
-        scientific = FALSE
-      ))
-    valueBox(deaths, "Total Death", color = "red")
-  })
-  
-  output$recovered <- renderValueBox({
-    recovereds <- newdate() %>%
-      filter(country %in% c(input$country_choice)) %>%
-      pivot_wider(names_from = "type", values_from = "cases") %>%
-      summarise(total_confirmed = format(
-        sum(recovered, na.rm = TRUE),
-        big.mark = ",",
-        scientific = FALSE
-      ))
-    valueBox(recovereds, "Total Recovered")
-  })
+
   
   hoverData <- reactive({
     currentEventData <-
@@ -431,7 +425,7 @@ server <- function(input, output, session) {
         "Death" = "death",
         "Recovered" = "recovered"
       )
-    
+
     DT::datatable(
       summary,
       style = "bootstrap",

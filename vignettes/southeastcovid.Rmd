@@ -1,0 +1,19 @@
+---
+title: "A Shiny App of Covid-19 in SOuth East Asia"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{A Shiny App of Covid-19 in South East Asia}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(southeastcovid)
+```
