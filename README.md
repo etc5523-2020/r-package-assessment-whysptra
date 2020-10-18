@@ -11,7 +11,7 @@ You can install the  _southeastcovid_ with:
 
 ``` r
 install.packages("devtools")
-devtools::install_github(etc5523-2020/r-package-assessment-whysptra)
+devtools::install_github("etc5523-2020/r-package-assessment-whysptra")
 ```
 
 ## Example
