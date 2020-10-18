@@ -12,7 +12,7 @@ library(shiny)
 library(dplyr)
 newdate <- function(input){
   shiny::reactive({
-   req(input$range)
-  southeast %>% dplyr::filter(between(date, input$range[1], input$range[2]))
+   shiny::req(input$range)
+  southeastcovid::southeast %>% dplyr::filter(dplyr::between(date, input$range[1], input$range[2]))
 })
 }

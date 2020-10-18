@@ -15,9 +15,10 @@
 library(dplyr)
 library(shinydashboard)
 library(tidyr)
+library(magrittr)
 valueboxprint <- function(input, df, x, label, colors){
   shinydashboard::renderValueBox({
-    req(input$country_choice)
+    shiny::req(input$country_choice)
     
     case <- dplyr::filter(df, country %in% c(input$country_choice)) %>%
     tidyr::pivot_wider(names_from = "type", values_from = "cases")

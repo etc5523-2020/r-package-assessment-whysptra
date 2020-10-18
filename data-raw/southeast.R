@@ -1,9 +1,11 @@
 ## code to prepare `southeast` dataset goes here
 
 library(coronavirus)
+library(dplyr)
+library(magrittr)
 
-southeast <- coronavirus %>%
-  filter(
+southeast <- coronavirus::coronavirus %>%
+  dplyr::filter(
     country %in% c(
       "Indonesia",
       "Singapore",

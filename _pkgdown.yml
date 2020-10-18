@@ -10,7 +10,10 @@ navbar:
     home: ~
     help:
       text: Get started
-      href: articles/crops.html
+      href: articles/cropdes.html
     github:
       icon: fa-github fa-lg
-      href: https://github.com/
+      href: https://github.com/whysptra
+      
+      
+

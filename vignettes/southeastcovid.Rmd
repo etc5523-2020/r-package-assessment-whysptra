@@ -1,5 +1,5 @@
 ---
-title: "A Shiny App of Covid-19 in SOuth East Asia"
+title: "A Shiny App of Covid-19 in South East Asia"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{A Shiny App of Covid-19 in South East Asia}

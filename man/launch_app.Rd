@@ -10,6 +10,6 @@ The dataset from the application comes from Ramikripsin coronavirus package
 This function will find and load the shiny application from inst/app.
 }
 \examples{
-launch_app("inst/app")
+launch_app()
 
 }
