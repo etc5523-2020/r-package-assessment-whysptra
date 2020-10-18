@@ -19,7 +19,8 @@ Imports:
     shinydashboard,
     dplyr,
     tidyr,
-    magrittr
+    magrittr,
+    here
 Depends: 
     R (>= 2.10)
 Suggests: 

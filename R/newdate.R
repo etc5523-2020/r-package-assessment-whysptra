@@ -5,8 +5,6 @@
 #' @description This function refactor the reactive function that takes value from date range input 
 #'
 #'
-#' @examples newdate(input)()
-#'
 #' @ @export
 library(shiny)
 library(dplyr)
