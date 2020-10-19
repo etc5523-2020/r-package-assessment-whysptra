@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Launch the Covid-19 shiny application — launch_app • southeastcovid</title>
+<title>Coronavirus cases dataset in South East Asia — southeast • southeastcovid</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Launch the Covid-19 shiny application — launch_app" />
-<meta property="og:description" content="This function will find and load the shiny application from inst/app." />
+<meta property="og:title" content="Coronavirus cases dataset in South East Asia — southeast" />
+<meta property="og:description" content="Data from `coronavirus` CRAN package which contain date, country, lat, lon, type and cases. The data start from 2020-01-22 until 2020-09-25" />
 
 
 
@@ -108,26 +108,43 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Launch the Covid-19 shiny application</h1>
-    <small class="dont-index">Source: <a href='https://github.com/etc5523-2020/r-package-assessment-whysptra/blob/master/R/launch_app.R'><code>R/launch_app.R</code></a></small>
-    <div class="hidden name"><code>launch_app.Rd</code></div>
+    <h1>Coronavirus cases dataset in South East Asia</h1>
+    
+    <div class="hidden name"><code>southeast.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function will find and load the shiny application from inst/app.</p>
+    <p>Data from `coronavirus` CRAN package which contain date, country, lat, lon, type and cases. The data start from 2020-01-22 until 2020-09-25</p>
     </div>
 
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"southeast"</span><span class='op'>)</span></pre>
 
 
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>A data frame with 7440 observations on the following 6 variables.</p><dl>
+    <dt><code>date</code></dt><dd><p>a Date vector : date of cases</p></dd>
+    <dt><code>country</code></dt><dd><p>a character : vector country in south east asia</p></dd>
+    <dt><code>lat</code></dt><dd><p>a numeric vector : latitude</p></dd>
+    <dt><code>long</code></dt><dd><p>a numeric vector : longitude</p></dd>
+    <dt><code>type</code></dt><dd><p>a character vector : type of cases consist of confirmed, death, and recovered</p></dd>
+    <dt><code>cases</code></dt><dd><p>a numeric vector : number of cases</p></dd>
+  
+</dl>
+
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This dataset used to create the shiny app</p>
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p>The dataset from the application comes from Ramikripsin coronavirus package</p>
+    <p>https://github.com/RamiKrispin/coronavirus</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Rami Krispin and Jarrett Byrnes (2020). coronavirus: The 2019 Novel Coronavirus COVID-19 (2019-nCoV) Dataset. R package version 0.3.0.9000.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>launch_app</span><span class='op'>(</span><span class='op'>)</span>
-<span class='op'>}</span>
-
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>southeast</span><span class='op'>)</span>
+<span class='co'>## southeast$country</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
