@@ -1,5 +1,28 @@
 ## code to prepare `southeast` dataset goes here
 
+#' COronavirus cases dataset in South East Asia
+#'
+#' Data from `coronavirus` CRAN package which contain date, country, lat, lon, type and cases.
+#' The data start from 2020-01-22 until 2020-09-25
+#'
+#' @docType data
+#'
+#' @usage data(southeast)
+#'
+#'
+#' @keywords datasets
+#'
+#' @references Rami Krispin and Jarrett Byrnes (2020). coronavirus: The 2019 Novel Coronavirus COVID-19
+#`(2019-nCoV) Dataset. R package version 0.3.0.9000.
+#' (\href{https://github.com/RamiKrispin/coronavirus})
+#'
+#' @source \href{https://github.com/RamiKrispin/coronavirus}
+#'
+#' @examples
+#' data(southeast)
+#' southeast$country
+#' southeast$date
+
 library(coronavirus)
 library(dplyr)
 library(magrittr)

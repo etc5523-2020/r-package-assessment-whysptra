@@ -5,9 +5,10 @@
 #' @description This function refactor the reactive function that takes value from date range input 
 #'
 #'
-#' @ @export
+#' @export
 library(shiny)
 library(dplyr)
+library(magrittr)
 newdate <- function(input){
   shiny::reactive({
    shiny::req(input$range)

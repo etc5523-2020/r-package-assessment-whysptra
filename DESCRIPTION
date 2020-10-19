@@ -20,7 +20,8 @@ Imports:
     dplyr,
     tidyr,
     magrittr,
-    here
+    here,
+    coronavirus
 Depends: 
     R (>= 2.10)
 Suggests: 
