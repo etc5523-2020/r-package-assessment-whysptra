@@ -5,8 +5,12 @@
 #' @description This function will find and load the shiny application from inst/app.
 #'
 #'
-#'
 #' @source The dataset from the application comes from Ramikripsin coronavirus package
+#'
+#' @examples
+#'\dontrun{
+#'launch_app()
+#' }
 #'
 #' @export
 #' 

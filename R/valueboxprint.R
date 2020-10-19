@@ -19,13 +19,12 @@ library(dplyr)
 library(shinydashboard)
 library(tidyr)
 library(magrittr)
-library(coronavirus)
 
 valueboxprint <- function(input, df, x, label, colors){
   shinydashboard::renderValueBox({
     shiny::req(input$country_choice)
     
-    case <- dplyr::filter(df, coronavirus::coronavirus$country %in% c(input$country_choice)) %>%
+    case <- dplyr::filter(df, country %in% c(input$country_choice)) %>%
     tidyr::pivot_wider(names_from = "type", values_from = "cases")
     
     y <- case[,x]

@@ -9,3 +9,9 @@ The dataset from the application comes from Ramikripsin coronavirus package
 \description{
 This function will find and load the shiny application from inst/app.
 }
+\examples{
+\dontrun{
+launch_app()
+}
+
+}

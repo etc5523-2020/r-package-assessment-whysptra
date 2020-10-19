@@ -1,14 +1,23 @@
 ## code to prepare `southeast` dataset goes here
 
-#' COronavirus cases dataset in South East Asia
+#' Coronavirus cases dataset in South East Asia
 #'
 #' Data from `coronavirus` CRAN package which contain date, country, lat, lon, type and cases.
 #' The data start from 2020-01-22 until 2020-09-25
+#' 
+#' @format A data frame with 7440 rows and 6 variables:
+#' \describe{
+#'   \item{date}{date of cases}
+#'   \item{country}{country in south east asia}
+#'   \item{lat}{latitude}
+#'   \item{lon}{longitude}
+#'   \item{type}{type of cases consist of confirmed, death, and recovered}
+#'   \item{cases}{number of cases}
 #'
 #' @docType data
 #'
 #' @usage data(southeast)
-#'
+#' @alias {southeast}
 #'
 #' @keywords datasets
 #'
