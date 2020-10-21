@@ -37,7 +37,7 @@ head(covid_cases)
 
 `launch_app()` is the function that launch the shiny application. It takes the working directory and find the `\inst\app` folder to which contain the `app.R`
 
-```{r launch}
+```{r launch, eval=FALSE}
 library(southeastcovid)
 launch_app() 
 ```

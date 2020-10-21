@@ -1,6 +1,22 @@
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+
+  
+test_that("valuebox", {
+  
+id <- "confirmed"
+  
+  expect_equal(
+    valuebox(id),
+    valuebox("confirmed")
+  )
 })
 
-valuebox("confirmed")
+test_that("valuebox", {
+  
+  id <- "recovered"
+  
+  expect_equal(
+    valuebox(id),
+    valuebox("recovered")
+  )
+})
 
