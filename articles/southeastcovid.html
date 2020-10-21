@@ -38,7 +38,10 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../articles/cropdes.html">Get started</a>
+  <a href="../index.html">
+    <span class="fas fa fas fa-home fa-lg"></span>
+     
+  </a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -49,7 +52,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/whysptra">
+  <a href="https://github.com/etc5523-2020/r-package-assessment-whysptra">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -64,7 +67,8 @@
 
       
 
-      </header><script src="southeastcovid_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="southeastcovid_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="southeastcovid_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="southeastcovid_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>A Shiny App of Covid-19 in South East Asia</h1>
@@ -79,11 +83,88 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit">
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/etc5523-2020/r-package-assessment-whysptra">southeastcovid</a></span><span class="op">)</span></pre></div>
+<p>The <strong>southeastcovid</strong> package extends the <a href="https://ramikrispin.github.io/coronavirus/">coronavirus</a> package with shiny app. Built on top of the <a href="https://shiny.rstudio.com/">shiny</a>, a shiny application is an interactive dashboard made to explore the coronavirus development, specifically in South East Asia. The <code>southeastcovid</code> package aims to let users understand the coronavirus trend in South East Asia countries with the interactive app.</p>
+<div id="dataset" class="section level2">
+<h2 class="hasAnchor">
+<a href="#dataset" class="anchor"></a>Dataset</h2>
+<p><code>southeast</code> creates a tibble object, which contain the pre-loaded dataset that used in the shiny application. It can be checked with ?southeastcovid::southeast to understand the variable included.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Attaching package: 'dplyr'</span>
+<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     filter, lag</span>
+<span class="co">#&gt; The following objects are masked from 'package:base':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Attaching package: 'lubridate'</span>
+<span class="co">#&gt; The following objects are masked from 'package:base':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     date, intersect, setdiff, union</span>
+<span class="va">covid_cases</span> <span class="op">&lt;-</span> <span class="fu">southeastcovid</span><span class="fu">::</span><span class="va"><a href="../reference/southeast.html">southeast</a></span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">date</span>, <span class="va">country</span>, <span class="va">type</span>, <span class="va">cases</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">covid_cases</span><span class="op">)</span>
+<span class="co">#&gt;         date country      type cases</span>
+<span class="co">#&gt; 1 2020-01-22  Brunei confirmed     0</span>
+<span class="co">#&gt; 2 2020-01-23  Brunei confirmed     0</span>
+<span class="co">#&gt; 3 2020-01-24  Brunei confirmed     0</span>
+<span class="co">#&gt; 4 2020-01-25  Brunei confirmed     0</span>
+<span class="co">#&gt; 5 2020-01-26  Brunei confirmed     0</span>
+<span class="co">#&gt; 6 2020-01-27  Brunei confirmed     0</span></pre></div>
+</div>
+<div id="how-to-launch" class="section level2">
+<h2 class="hasAnchor">
+<a href="#how-to-launch" class="anchor"></a>How to launch</h2>
+<p><code><a href="../reference/launch_app.html">launch_app()</a></code> is the function that launch the shiny application. It takes the working directory and find the <code>\inst\app</code> folder to which contain the <code>app.R</code></p>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/etc5523-2020/r-package-assessment-whysptra">southeastcovid</a></span><span class="op">)</span>
+<span class="fu"><a href="../reference/launch_app.html">launch_app</a></span><span class="op">(</span><span class="op">)</span> </pre></div>
+</div>
+<div id="what-app-does" class="section level2">
+<h2 class="hasAnchor">
+<a href="#what-app-does" class="anchor"></a>What app does</h2>
+<p>An application to explore the development of coronavirus in South East Asia countries. There are two graph in this application. In the continent tab, you can see the graph for daily cases in all South East Asia In the countries tab, there are graph for every representative country in South East Asia.</p>
+<p>Both graph represented by the day, countries, type of cases, and number of each representative cases.</p>
+</div>
+<div id="how-to-use-it" class="section level2">
+<h2 class="hasAnchor">
+<a href="#how-to-use-it" class="anchor"></a>How to use it</h2>
+<div id="tab-continent" class="section level3">
+<h3 class="hasAnchor">
+<a href="#tab-continent" class="anchor"></a>Tab : Continent</h3>
+<p><img src="screenshot.png"></p>
+<p>In this tab, there is a line graph showing the progress of cases in all South East Asia countries. The x-axis shows the date, while the y-axis shows the number of cases. Each line represents one country. The features available in the sidebar are :</p>
+<ul>
+<li>Date range: date range from 01/03/2020 to 27/09/2020. When pressing this field, a calendar will appear to select the minimum and maximum date ranges as desired. The graph will adjust according to the selected date.</li>
+<li>Country selection: contains ten countries that can be selected multiple times. This feature can be used to compare one country to another.</li>
+<li>Type of cases: There are three types of cases, namely confirmed, death, and recovered. Can only select one case to visualize.</li>
+<li>ValueBox : shows the total of each case according to the Date Range and Country options.</li>
+</ul>
+<p>At the bottom there is Hover Data and Click Data. Hover data will show the date and number of cases dynamically when the cursor hover the line graph. Meanwhile, Click Data will show the date data and the number of cases at a point when the line graph is clicked.</p>
+<p>This section useful when you want to compare the number of one individual cases in multiple country.</p>
+</div>
+<div id="tab-countries" class="section level3">
+<h3 class="hasAnchor">
+<a href="#tab-countries" class="anchor"></a>Tab : Countries</h3>
+<p><img src="screenshot2.png"></p>
+<p>In this tab, there is a line graph showing the progress of cases in one country. On the x-axis it shows the date, while on the y-axis it shows the number of cases. Each line represents the type of case (confirmed, death, and recovered). The features available on the sidebar are:</p>
+<ul>
+<li>Country selection: contains ten countries which can only be selected once.</li>
+<li>Interactive Table: shows the country’s daily case data. The table will change according to the country selection.</li>
+<li>ValueBox : shows the total of each case and active cases according to the Country selection. This section can be used to compare the number of all cases in a country.</li>
+</ul>
+</div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 
