@@ -20,3 +20,10 @@ test_that("valuebox", {
   )
 })
 
+
+test_that("southeast",{
+  appDir <- system.file("app", package = "southeastcovid")
+  testServer(appDir,{
+    expect_equal(sum(southeast$cases), 1155749)
+  })
+})
