@@ -15,9 +15,11 @@
 #' @export
 #' 
 library(shiny)
-library(here)
 
 launch_app <- function(){
-  dir <- getwd()
-  shiny::runApp(appDir = paste0(dir, paste0("/inst/app")))
+   appDir <- system.file("app", package="southeastcovid")
+   if (appDir == ""){
+     stop("Could not find the directory, please re-install southeastcovid")
+   }
+  shiny::runApp(appDir, display.mode = "normal")
   }

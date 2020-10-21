@@ -21,10 +21,19 @@ Imports:
     tidyr,
     magrittr,
     here,
-    coronavirus
+    coronavirus,
+    plotly,
+    scales,
+    htmltools,
+    lubridate,
+    shinyWidgets,
+    dashboardthemes,
+    shinyjs,
+    DT
 Depends: 
     R (>= 2.10)
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat
 VignetteBuilder: knitr

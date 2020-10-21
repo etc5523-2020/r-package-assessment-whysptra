@@ -4,7 +4,7 @@
 [![R build status](https://github.com/etc5523-2020/r-package-assessment-whysptra/workflows/R-CMD-check/badge.svg)](https://github.com/etc5523-2020/r-package-assessment-whysptra/actions)
 <!-- badges: end -->
 
-The goal of _southeastcovid_ is to ...
+The goal of _southeastcovid_ is to explore the development of coronavirus cases in South East Asia. 
 
 ## Installation
 

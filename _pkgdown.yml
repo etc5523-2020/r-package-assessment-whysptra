@@ -7,13 +7,9 @@ navbar:
     left: [help]
     right: [github]
   components:
-    home: ~
-    help:
-      text: Get started
-      href: articles/cropdes.html
-    github:
+    github: 
       icon: fa-github fa-lg
-      href: https://github.com/whysptra
-      
+      href: https://github.com/etc5523-2020/r-package-assessment-whysptra
+    
       
 
