@@ -22,8 +22,9 @@ test_that("valuebox", {
 
 
 test_that("southeast",{
+  library(shiny)
   appDir <- system.file("app", package = "southeastcovid")
-  testServer(appDir,{
+  shiny::testServer(appDir,{
     expect_equal(sum(southeast$cases), 1155749)
   })
 })

@@ -31,7 +31,8 @@ Imports:
     shinyjs,
     DT
 Depends: 
-    R (>= 2.10)
+    R (>= 2.10),
+    tidyverse
 Suggests: 
     knitr,
     rmarkdown,
