@@ -82,7 +82,16 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/etc5523-2020/r-package-assessment-whysptra">southeastcovid</a></span><span class="op">)</span></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/etc5523-2020/r-package-assessment-whysptra">southeastcovid</a></span><span class="op">)</span>
+<span class="co">#&gt; Loading required package: tidyverse</span>
+<span class="co">#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</span>
+<span class="co">#&gt; ✔ ggplot2 3.3.2     ✔ purrr   0.3.4</span>
+<span class="co">#&gt; ✔ tibble  3.0.4     ✔ dplyr   1.0.2</span>
+<span class="co">#&gt; ✔ tidyr   1.1.2     ✔ stringr 1.4.0</span>
+<span class="co">#&gt; ✔ readr   1.4.0     ✔ forcats 0.5.0</span>
+<span class="co">#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span>
+<span class="co">#&gt; ✖ dplyr::filter() masks stats::filter()</span>
+<span class="co">#&gt; ✖ dplyr::lag()    masks stats::lag()</span></pre></div>
 <p>The <strong>southeastcovid</strong> package extends the <a href="https://ramikrispin.github.io/coronavirus/">coronavirus</a> package with shiny app. Built on top of the <a href="https://shiny.rstudio.com/">shiny</a>, a shiny application is an interactive dashboard made to explore the coronavirus development, specifically in South East Asia. The <code>southeastcovid</code> package aims to let users understand the coronavirus trend in South East Asia countries with the interactive app.</p>
 <div id="dataset" class="section level2">
 <h2 class="hasAnchor">
@@ -90,14 +99,6 @@
 <p><code>southeast</code> creates a tibble object, which contain the pre-loaded dataset that used in the shiny application. It can be checked with ?southeastcovid::southeast to understand the variable included.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'dplyr'</span>
-<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     filter, lag</span>
-<span class="co">#&gt; The following objects are masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Attaching package: 'lubridate'</span>
